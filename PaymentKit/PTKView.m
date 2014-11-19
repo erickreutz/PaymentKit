@@ -15,6 +15,7 @@
 #define LuggBlue [UIColor colorWithHue:0.642 saturation:0.477 brightness:0.502 alpha:1]
 #define LuggGray [UIColor colorWithHue:0.567 saturation:0.020 brightness:0.965 alpha:1];
 #define LuggPlaceholder [UIColor colorWithHue:0.632 saturation:0.206 brightness:0.741 alpha:1]
+#define LuggRed [UIColor colorWithHue:0.004 saturation:0.588 brightness:1.000 alpha:1]
 #define LuggFont @"AvenirNext-Medium"
 
 #define kPTKViewPlaceholderViewAnimationDuration 0.25
@@ -86,7 +87,7 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
     _isValidState = NO;
 
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, 290, 48);
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor clearColor];
     self.tintColor = LuggBlue;
 
     self.innerView = [[UIView alloc] initWithFrame:CGRectMake(40, 15, self.frame.size.width - 30, 20)];
@@ -102,6 +103,7 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
     self.opaqueOverGradientView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 13, 34)];
     self.opaqueOverGradientView.backgroundColor = [UIColor whiteColor];
     self.opaqueOverGradientView.alpha = 0.0;
+    self.opaqueOverGradientView.clipsToBounds = YES;
     [self.innerView addSubview:self.opaqueOverGradientView];
 
     [self addSubview:self.innerView];
@@ -129,7 +131,7 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
     self.cardNumberField.delegate = self;
     self.cardNumberField.placeholder = [self.class localizedStringWithKey:@"placeholder.card_number" defaultValue:@"1234 5678 9012 3456"];
     self.cardNumberField.keyboardType = UIKeyboardTypeNumberPad;
-    self.cardNumberField.textColor = LuggBlue;
+    self.cardNumberField.textColor = LuggPlaceholder;
     self.cardNumberField.font = [UIFont fontWithName:LuggFont size:17];
 
     [self.cardNumberField.layer setMasksToBounds:YES];
@@ -141,7 +143,7 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
     self.cardExpiryField.delegate = self;
     self.cardExpiryField.placeholder = [self.class localizedStringWithKey:@"placeholder.card_expiry" defaultValue:@"MM/YY"];
     self.cardExpiryField.keyboardType = UIKeyboardTypeNumberPad;
-    self.cardExpiryField.textColor = LuggBlue;
+    self.cardExpiryField.textColor = LuggPlaceholder;
     self.cardExpiryField.font = [UIFont fontWithName:LuggFont size:17];
 
     [self.cardExpiryField.layer setMasksToBounds:YES];
@@ -153,7 +155,7 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
     self.cardCVCField.delegate = self;
     self.cardCVCField.placeholder = [self.class localizedStringWithKey:@"placeholder.card_cvc" defaultValue:@"CVC"];
     self.cardCVCField.keyboardType = UIKeyboardTypeNumberPad;
-    self.cardCVCField.textColor = LuggBlue;
+    self.cardCVCField.textColor = LuggPlaceholder;
     self.cardCVCField.font = [UIFont fontWithName:LuggFont size:17];
 
     [self.cardCVCField.layer setMasksToBounds:YES];
@@ -532,7 +534,7 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
 - (void)textFieldIsInvalid:(UITextField *)textField withErrors:(BOOL)errors
 {
     if (errors) {
-        textField.textColor = RedColor;
+        textField.textColor = LuggRed;
     } else {
         textField.textColor = LuggBlue;
     }
