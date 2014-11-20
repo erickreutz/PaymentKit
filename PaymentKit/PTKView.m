@@ -8,7 +8,7 @@
 
 #define LuggYellow [UIColor colorWithHue:0.151 saturation:0.467 brightness:1.000 alpha:1]
 #define LuggBlue [UIColor colorWithHue:0.642 saturation:0.477 brightness:0.502 alpha:1]
-#define LuggGray [UIColor colorWithHue:0.567 saturation:0.020 brightness:0.965 alpha:1];
+#define LuggGray [UIColor colorWithHue:0.567 saturation:0.020 brightness:0.965 alpha:1]
 #define LuggPlaceholder [UIColor colorWithHue:0.632 saturation:0.206 brightness:0.741 alpha:1]
 #define LuggRed [UIColor colorWithHue:0.004 saturation:0.588 brightness:1.000 alpha:1]
 #define LuggFont @"AvenirNext-Medium"
@@ -95,7 +95,7 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
 
     [self.innerView addSubview:self.cardNumberField];
 
-    self.opaqueOverGradientView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 13, 34)];
+    self.opaqueOverGradientView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 34)];
     self.opaqueOverGradientView.backgroundColor = [UIColor whiteColor];
     self.opaqueOverGradientView.alpha = 0.0;
     self.opaqueOverGradientView.clipsToBounds = YES;
