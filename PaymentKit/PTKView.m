@@ -6,11 +6,6 @@
 //  Copyright (c) 2013 Stripe. All rights reserved.
 //
 
-#define RGB(r,g,b) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0f]
-#define DarkGreyColor RGB(0,0,0)
-#define RedColor RGB(253,0,17)
-#define DefaultBoldFont [UIFont boldSystemFontOfSize:17]
-
 #define LuggYellow [UIColor colorWithHue:0.151 saturation:0.467 brightness:1.000 alpha:1]
 #define LuggBlue [UIColor colorWithHue:0.642 saturation:0.477 brightness:0.502 alpha:1]
 #define LuggGray [UIColor colorWithHue:0.567 saturation:0.020 brightness:0.965 alpha:1];
@@ -252,7 +247,7 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
         lastGroupSize = [self.cardNumber.lastGroup sizeWithFont:DefaultBoldFont];
     }
 #else
-    NSDictionary *attributes = @{NSFontAttributeName: DefaultBoldFont};
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:LuggFont size:17]};
 
     cardNumberSize = [self.cardNumber.formattedString sizeWithAttributes:attributes];
     lastGroupSize = [self.cardNumber.lastGroup sizeWithAttributes:attributes];
