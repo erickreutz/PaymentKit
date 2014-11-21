@@ -94,7 +94,7 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
 
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, 290, 48);
     self.backgroundColor = [UIColor clearColor];
-//    self.tintColor = LuggBlue;
+    self.tintColor = LuggBlue;
 
     self.innerView = [[UIView alloc] initWithFrame:CGRectMake(40, 15, self.frame.size.width - 30, 20)];
     self.innerView.clipsToBounds = YES;
