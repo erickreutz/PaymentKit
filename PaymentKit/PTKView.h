@@ -14,6 +14,11 @@
 #import "PTKAddressZip.h"
 #import "PTKUSAddressZip.h"
 
+typedef NS_ENUM(NSInteger, PTKViewStyle) {
+    PTKViewStyleLight,
+    PTKViewStyleDark
+};
+
 @class PTKView, PTKTextField;
 
 @protocol PTKViewDelegate <NSObject>
@@ -39,5 +44,7 @@
 @property IBOutlet UIImageView *placeholderView;
 @property (nonatomic, weak) id <PTKViewDelegate> delegate;
 @property (readonly) PTKCard *card;
+
+- (instancetype)initWithStyle:(PTKViewStyle)style;
 
 @end
