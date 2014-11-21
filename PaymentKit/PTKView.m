@@ -96,7 +96,7 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
     self.backgroundColor = [UIColor clearColor];
     self.tintColor = LuggBlue;
 
-    self.innerView = [[UIView alloc] initWithFrame:CGRectMake(40, 15, self.frame.size.width - 30, 20)];
+    self.innerView = [[UIView alloc] initWithFrame:CGRectMake(40, 13, self.frame.size.width - 30, 20)];
     self.innerView.clipsToBounds = YES;
 
     [self setupPlaceholderView];
@@ -107,7 +107,7 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
     [self.innerView addSubview:self.cardNumberField];
 
     self.opaqueOverGradientView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 12, 34)];
-    self.opaqueOverGradientView.backgroundColor = [UIColor whiteColor];
+    self.opaqueOverGradientView.backgroundColor = [UIColor clearColor];
     self.opaqueOverGradientView.alpha = 0.0;
     self.opaqueOverGradientView.clipsToBounds = YES;
     [self.innerView addSubview:self.opaqueOverGradientView];
@@ -119,13 +119,13 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
     
     if (self.style == PTKViewStyleDark) {
         self.tintColor = LuggYellow;
-        self.opaqueOverGradientView.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor clearColor];
     }
 }
 
 - (void)setupPlaceholderView
 {
-    self.placeholderView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 15, 32, 20)];
+    self.placeholderView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 13, 32, 20)];
     self.placeholderView.backgroundColor = [UIColor clearColor];
     self.placeholderView.image = [UIImage imageNamed:@"placeholder"];
 
@@ -258,6 +258,8 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
                                      self.cardNumberField.frame.origin.y,
                                      self.cardNumberField.frame.size.width,
                                      self.cardNumberField.frame.size.height);
+
+                             self.cardNumberField.text = self.cardNumberField.attributedText.string;
                          }
                          completion:^(BOOL completed) {
                              [self.cardExpiryField removeFromSuperview];
@@ -312,6 +314,11 @@ static NSString *const kPTKOldLocalizedStringsTableName = @"STPaymentLocalizable
                 self.cardNumberField.frame.origin.y,
                 self.cardNumberField.frame.size.width,
                 self.cardNumberField.frame.size.height);
+        
+        NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:self.cardNumberField.text];
+        [string addAttribute:NSForegroundColorAttributeName value:[UIColor clearColor] range:NSMakeRange(0, self.cardNumberField.text.length - 4)];
+        self.cardNumberField.attributedText = string;
+        
     }                completion:nil];
 
     [self addSubview:self.placeholderView];
